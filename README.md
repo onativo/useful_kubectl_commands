@@ -1,2 +1,3 @@
-# useful_kubectl_commands
-Repositório com diversos comandos kubectl uteis para gerenciamento de Kubernetes
+# Comandos kubectl úteis para gerenciamento de Kubernetes
+
+Acesse [aqui](https://github.com/onativo/useful_kubectl_commands/blob/main/commands.md) a lista de comandos
