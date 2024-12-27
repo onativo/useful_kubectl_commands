@@ -21,7 +21,7 @@ application-client
 for deployment_name in $(kubectl get deployments -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep '^<applicaiton>'); do
   container_name=$deployment
   image_name=<image_name>
-  kubectl set image deployment/$deployment_name $container_name=<image_name>
+  kubectl set image deployment/$deployment_name $container_name=$image_name
 done
 ```
 
