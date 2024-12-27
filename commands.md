@@ -18,11 +18,7 @@ application-server
 application-client
 
 ```sh
-for deployment_name in $(kubectl get deployments -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep '^<applicaiton>'); do
-  container_name=$deployment
-  image_name=<image_name>
-  kubectl set image deployment/$deployment_name $container_name=$image_name
-done
+for deployment_name in $(kubectl get deployments -n namespace -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep '^application_name'); do container_name=$deployment_name; image_name=image_name; kubectl set image deployment/$deployment_name $container_name=$image_name -n namespace; done
 ```
 
 Acima fazemos um container_name=$deployment pois o nome do nosso container é igual ao nome do deployment. Essa substituição é meramente para não causar confusão, mas você pode modificar como desejar, especialmente se teu container possuir um nome diferente do deployment.
