@@ -19,7 +19,7 @@ jobs:
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |
-            🎉 **Olá! Um novo Pull Request foi aberto no repositório: ${{ github.event.repository.name }}**
+            🎉 **Olá! Um novo Pull Request foi aberto no repositório:** [${{ github.event.repository.name }}](${{ github.event.repository.html_url }})
 
             **Título:** ${{ github.event.pull_request.title }}
 
@@ -37,7 +37,7 @@ jobs:
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |            
-            ✅ **Olá! O Pull Request foi mergeado no repositório: ${{ github.event.repository.name }}**
+            ✅ **Olá! O Pull Request foi mergeado no repositório:** [${{ github.event.repository.name }}](${{ github.event.repository.html_url }})
 
             **Título:** ${{ github.event.pull_request.title }}
 
