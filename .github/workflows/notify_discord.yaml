@@ -19,16 +19,15 @@ jobs:
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |
-            Olá!
-            🎉 **Um novo Pull Request foi aberto no repositório ${{ github.event.repository.name }}!**
+            🎉 **Olá! Um novo Pull Request foi aberto no repositório: ${{ github.event.repository.name }}**
 
-            **${{ github.event.pull_request.title }}**
+            **Título:** ${{ github.event.pull_request.title }}
 
-            - **👤 Autor:** ${{ github.event.pull_request.user.login }}
-            - **🔢 PR #${{ github.event.pull_request.number }}**
-            - **🌿 Branch:** ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
+            👤 **Autor:** ${{ github.event.pull_request.user.login }}
+            🔢 **PR #${{ github.event.pull_request.number }}**
+            🌿 **Branch:** ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
 
-            - **🔗 [Ver Pull Request](${{ github.event.pull_request.html_url }})**
+            🔗 **[Ver Pull Request](${{ github.event.pull_request.html_url }})**
 
       - name: Send message for pull request merged
         if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
@@ -37,15 +36,14 @@ jobs:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-          message: |
-            Olá!
-            ✅ **O Pull Request foi mergeado no repositório ${{ github.event.repository.name }}!**
+          message: |            
+            ✅ **Olá! O Pull Request foi mergeado no repositório: ${{ github.event.repository.name }}**
 
-            **${{ github.event.pull_request.title }}**
+            **Título:** ${{ github.event.pull_request.title }}
 
-            - **👤 Autor:** ${{ github.event.pull_request.user.login }}
-            - **🔢 PR #${{ github.event.pull_request.number }}**
-            - **🌿 Branch:** ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
+            👤 **Autor:** ${{ github.event.pull_request.user.login }}
+            🔢 **PR #${{ github.event.pull_request.number }}**
+            🌿 **Branch:** ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
 
-            - **🔗 [Ver Pull Request](${{ github.event.pull_request.html_url }})**
+            🔗 **[Ver Pull Request](${{ github.event.pull_request.html_url }})**
 
