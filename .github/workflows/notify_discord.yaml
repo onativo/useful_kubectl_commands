@@ -19,7 +19,7 @@ jobs:
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |
-            🎉 **Novo Pull Request Aberto!**
+            @everyone \n\n 🎉 **Novo Pull Request Open!**
 
             **${{ github.event.pull_request.title }}**
 
@@ -37,7 +37,7 @@ jobs:
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |
-            ✅ **Pull Request Mesclado!**
+            @everyone \n\n ✅ **Pull Request Merged!**
 
             **${{ github.event.pull_request.title }}**
 
