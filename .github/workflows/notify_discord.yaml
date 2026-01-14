@@ -16,54 +16,34 @@ jobs:
         uses: appleboy/discord-action@master
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          color: "#48f442"
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |
             🎉 **Novo Pull Request Aberto!**
 
-            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            **${{ github.event.pull_request.title }}**
 
-            📝 **${{ github.event.pull_request.title }}**
+            👤 Autor: ${{ github.event.pull_request.user.login }}
+            🔢 PR #${{ github.event.pull_request.number }}
+            🌿 Branch: ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
 
-            👤 **Autor:** ${{ github.event.pull_request.user.login }}
-            🔢 **PR #${{ github.event.pull_request.number }}**
-            📅 **Criado em:** ${{ github.event.pull_request.created_at }}
-
-            🌿 **Branch:** `${{ github.event.pull_request.head.ref }}` → `${{ github.event.pull_request.base.ref }}`
-            ${{ github.event.pull_request.draft && '📝 **Status:** Draft (Rascunho)' || '' }}
-
-            ${{ github.event.pull_request.body && format('📄 **Descrição:**\n{0}\n', github.event.pull_request.body) || '' }}
-
-            🔗 **Links:**
-            • [Ver Pull Request](${{ github.event.pull_request.html_url }})
-            • [Ver Repositório](${{ github.event.repository.html_url }})
-            • [Perfil do Autor](https://github.com/${{ github.event.pull_request.user.login }})
-
-            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            🔗 [Ver Pull Request](${{ github.event.pull_request.html_url }})
 
       - name: Send message for pull request merged
         if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         uses: appleboy/discord-action@master
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          color: "#5865F2"
           username: "GitHub Bot"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           message: |
             ✅ **Pull Request Mesclado!**
 
-            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            **${{ github.event.pull_request.title }}**
 
-            📝 **${{ github.event.pull_request.title }}**
+            👤 Autor: ${{ github.event.pull_request.user.login }}
+            🔢 PR #${{ github.event.pull_request.number }}
+            🌿 Branch: ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
 
-            👤 **Autor:** ${{ github.event.pull_request.user.login }}
-            🔢 **PR #${{ github.event.pull_request.number }}**
-            🌿 **Branch:** `${{ github.event.pull_request.head.ref }}` → `${{ github.event.pull_request.base.ref }}`
-
-            🔗 **Links:**
-            • [Ver Pull Request](${{ github.event.pull_request.html_url }})
-            • [Ver Repositório](${{ github.event.repository.html_url }})
-
-            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            🔗 [Ver Pull Request](${{ github.event.pull_request.html_url }})
 
