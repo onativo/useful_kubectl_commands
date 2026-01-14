@@ -2,7 +2,7 @@ name: notify
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, closed]
 
 jobs:
   notify:
@@ -66,3 +66,4 @@ jobs:
             • [Ver Repositório](${{ github.event.repository.html_url }})
 
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
