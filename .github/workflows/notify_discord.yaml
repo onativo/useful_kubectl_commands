@@ -3,6 +3,8 @@ name: notify
 on:
   pull_request:
     types: [opened, closed]
+  pull_request_review:
+    types: [submitted]
 
 jobs:
   notify:
@@ -29,6 +31,27 @@ jobs:
 
             🔗 **[Ver Pull Request](${{ github.event.pull_request.html_url }})**
 
+      - name: Send message for pull request approved and ready to merge
+        if: github.event_name == 'pull_request_review' && github.event.review.state == 'approved'
+        uses: appleboy/discord-action@master
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          username: "GitHub Bot"
+          avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          message: |
+            ✅ **Pull Request aprovado e pronto para merge!** [${{ github.event.repository.name }}](${{ github.event.repository.html_url }})
+
+            **Título:** ${{ github.event.pull_request.title }}
+
+            👤 **Autor:** ${{ github.event.pull_request.user.login }}
+            👨‍💻 **Aprovado por:** ${{ github.event.review.user.login }}
+            🔢 **PR #${{ github.event.pull_request.number }}**
+            🌿 **Branch:** ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
+
+            📝 **Status:** Aprovado e pronto para merge! 🚀
+
+            🔗 **[Ver Pull Request](${{ github.event.pull_request.html_url }})**
+
       - name: Send message for pull request merged
         if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         uses: appleboy/discord-action@master
@@ -46,4 +69,3 @@ jobs:
             🌿 **Branch:** ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
 
             🔗 **[Ver Pull Request](${{ github.event.pull_request.html_url }})**
-
